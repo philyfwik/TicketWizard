@@ -1,0 +1,169 @@
+body {
+	font-family: Arial;
+	text-align: center;
+	padding: 32px;
+}
+input, button {
+	font-family: inherit; 
+	font-size: inherit;
+}
+a:link, a:visited, a:hover, a:active {
+	color: #4784ff;
+	text-decoration: none;
+}
+table {
+	margin: auto;
+	border-spacing: 4px;
+}
+td {
+	text-align: left;
+	padding: 12px !important;
+}
+tr:nth-child(odd) td {
+	background: #f5f5f5;
+}
+tr:nth-child(even) td {
+	background: #bfedff;
+}
+form {
+	margin-bottom: 32px;
+}
+h1 {
+	padding-bottom: 32px;
+	text-shadow: 0em 0em 0.4em #498fff;
+}
+.content {
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 4px;
+	padding: 64px;
+}
+.wide {
+	min-width: 800px;
+}
+.floating {
+	display: inline-block;
+	float: left;
+	padding: 32px;
+	border: 1px solid #171051;
+	border-radius: 2px;
+}
+.floatingR {
+	float: right;
+	padding: 32px;
+	border: 1px solid #171051;
+	border-radius: 2px;
+}
+.wrapper {
+	display: inline-block;
+	overflow: hidden;
+	padding-top: 32px;
+	padding-bottom: 32px;
+}
+.userForm {
+	padding: 64px 64px; 
+}
+#signup {
+	overflow: hidden; 
+	align: right;
+}
+#login {
+	float: left;
+}
+#goHome {
+	margin: 64px 64px;
+}
+#logout {
+	align: center;
+}
+#home {
+	position: absolute;
+}
+#fields label {
+    display: inline-block;
+    float: left;
+    clear: left;
+    text-align: right;
+}
+#fields input {
+	display: inline-block;
+	float: right;
+	margin-left: 16px;
+}
+.button {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6674ed), color-stop(1, #4857db));
+	background: -moz-linear-gradient(top, #6674ed 5%, #4857db 100%);
+	background: -webkit-linear-gradient(top, #6674ed 5%, #4857db 100%);
+	background: -o-linear-gradient(top, #6674ed 5%, #4857db 100%);
+	background: -ms-linear-gradient(top, #6674ed 5%, #4857db 100%);
+	background: linear-gradient(to bottom, #6674ed 5%, #4857db 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6674ed', endColorstr='#4857db',GradientType=0);
+	background-color: #6674ed;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	border: 1px solid #382887;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff !important;
+	font-size: 17px;
+	padding: 16px 31px;
+	margin-right: 24px;
+	margin-left: 24px;
+	text-decoration: none;
+	text-shadow: 0px 1px 5px #19284d;
+	align: center;
+}
+.button:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #4857db), color-stop(1, #6674ed));
+	background: -moz-linear-gradient(top, #4857db 5%, #6674ed 100%);
+	background: -webkit-linear-gradient(top, #4857db 5%, #6674ed 100%);
+	background: -o-linear-gradient(top, #4857db 5%, #6674ed 100%);
+	background: -ms-linear-gradient(top, #4857db 5%, #6674ed 100%);
+	background: linear-gradient(to bottom, #4857db 5%, #6674ed 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4857db', endColorstr='#6674ed',GradientType=0);
+	background-color: #4857db;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+.medButton {
+	width: 80px;
+	height: 24px;
+	line-height: 24px;
+	padding: 4px 8px;
+	box-sizing: content-box;
+	font-size: 14px;
+	text-align: center;
+	margin-right: 24px;
+	margin-left: 24px;
+}
+.smlButton {
+	width: 64px;
+	height: 16px;
+	line-height: 16px;
+	padding: 2px 4px;
+	box-sizing: content-box;
+	font-size: 13px;
+	text-align: center;
+	margin-right: 4px;
+	margin-left: 4px;
+}
+.qty {
+	width: 16px;
+	height: 16px;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	border-radius: 16px;
+	padding: 0px 0px;
+	box-sizing: content-box;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	margin-right: 8px;
+	margin-left: 8px;
+}
+.small {
+	font-size: 12px;
+}
