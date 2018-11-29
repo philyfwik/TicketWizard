@@ -13,6 +13,9 @@
 <title>Browse Events</title>
 </head>
 <body>
+	<div align="left">
+		<a href='homepage.jsp'>Back to Home</a>
+	</div>
 
 	<h1>Search for the events you want to go to:</h1>
 
@@ -76,22 +79,22 @@
 				con = DriverManager.getConnection(url, uid, pw);
 				PreparedStatement pStmt = null;
 				if (name != null & category != null) {
-					out.println("<h3 align='center'>" + sortby + ascdesc+ "</h3>");
+					//out.println("<h3 align='center'>" + sortby + ascdesc+ "</h3>");
 					pStmt = con.prepareStatement(sql2);
 					out.println("<h3 align='center'>SHOWING: " + category + "</h3>");
 					pStmt.setString(1, category);
 				} else if (name != null & category == null) {
-					out.println("<h3 align='center'>" + sortby + ascdesc+ "</h3>");
+					//out.println("<h3 align='center'>" + sortby + ascdesc+ "</h3>");
 					pStmt = con.prepareStatement(sql);
 				} else if (name == null & category != null) {
 					out.println("<h2 align='center'>SHOWING: " + category + "</h2>");
-					out.println("<h3 align='center'>" + sortby + ascdesc+ "</h3>");
+					//out.println("<h3 align='center'>" + sortby + ascdesc+ "</h3>");
 					pStmt = con.prepareStatement(
 							"SELECT ename, description, city, category, enum, currcapacity FROM Event WHERE category = ? ORDER BY "
 									+ sortby + ascdesc);
 					pStmt.setString(1, category);
 				} else {
-					out.println("<h3 align='center'>" + sortby + ascdesc+ "</h3>");
+					//out.println("<h3 align='center'>" + sortby + ascdesc+ "</h3>");
 					pStmt = con.prepareStatement(
 							"SELECT ename, description, city, enum, category, currcapacity FROM Event ORDER BY " + sortby + ascdesc);
 				}
@@ -116,8 +119,5 @@
 	</div>
 	<br>
 	<br>
-	<div align="left">
-		<a class='button' href='homepage.jsp'>Back to Home</a>
-	</div>
 </body>
 </html>

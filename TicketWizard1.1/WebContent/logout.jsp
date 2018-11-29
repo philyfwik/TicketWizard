@@ -1,7 +1,5 @@
 <%
-
-//Set session userid to null
-request.getSession().setAttribute("userid", null);
-request.getSession().setAttribute("isadmin", null);
+session.invalidate();
 response.sendRedirect("homepage.jsp");
+return;
 %>

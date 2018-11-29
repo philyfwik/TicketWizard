@@ -12,8 +12,6 @@
 	if (code != null)
 		cd = Integer.parseInt(code);
 
-	out.println(username);
-	out.print(pass);
 	boolean valid = false;
 
 	int err = 3;
@@ -31,7 +29,7 @@
 		try (Connection con = DriverManager.getConnection(url, uid, pw)) {
 			Statement stmt = con.createStatement();
 			ResultSet rst = stmt.executeQuery("SELECT uid, isadmin FROM TUser WHERE username = '" + username
-					+ "' AND upw = '" + pass + "'");
+					+ "' AND upw = '" + pass + "' COLLATE Latin1_General_CS_AS");
 			if (rst.next()) {
 				err = 0;
 				valid = true;
@@ -41,7 +39,6 @@
 					request.getSession().setAttribute("isadmin", 1 );
 			}
 			
-			session.setAttribute("productList", null);
 		} catch (SQLException e) {
 			out.println(e);
 		}
@@ -51,8 +48,12 @@
 		response.sendRedirect("order.jsp");
 	else if (err == 0 && cd == 3)
 		response.sendRedirect("listusertickets.jsp");
+	else if (err == 0 && cd == 2)
+		response.sendRedirect("browse.jsp");
 	else if (err == 0)
 		response.sendRedirect("homepage.jsp");
+	else if(err != 0 && cd == 1)
+		response.sendRedirect("checkout.jsp?err="+err);
 	else
 		response.sendRedirect("login.jsp?err=" + err);
 %>

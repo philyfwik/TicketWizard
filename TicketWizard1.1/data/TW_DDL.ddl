@@ -52,11 +52,12 @@ CREATE TABLE Ticket (
 
 
 CREATE TABLE Cart(
-	uid int NOT NULL IDENTITY PRIMARY KEY,
-	enum int,
+	uid int NOT NULL,
+	enum int NOT NULL,
 	ename VARCHAR(100),
 	price DECIMAL(9,2),
 	quantity int,
+	PRIMARY KEY(uid, enum),
 	CONSTRAINT FK_Cart_TUser FOREIGN KEY (uid) REFERENCES TUser(uid),
 	CONSTRAINT FK_Cart_Ticket FOREIGN KEY (enum) REFERENCES Event(enum)
 );
@@ -112,4 +113,3 @@ INSERT INTO Event(ename, description, city, location, maxcapacity, hostid, ticke
 INSERT INTO Event(ename, description, city, location, maxcapacity, hostid, ticketprice, category) VALUES( 'Casino Night', 'Annual Casino night to raise awareness/money for some charitable cause', 'Vancouver', 'UNC Ballroom, University Way', 50, 2, 15, 'Other');
 
 INSERT INTO Event(ename, description, city, location, maxcapacity, hostid, ticketprice, category) VALUES( 'All You Can Eat KBBQ', 'UBCO Korean Club is hosting an all you can eat KBBQ night at the UNC Ballroom. All UBCO students welcome!', 'Kelowna', 'UNC Ballroom, University Way', 30, 2, 0, 'Food');
-

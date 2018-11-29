@@ -22,6 +22,9 @@
 			case 2:
 				out.println("Invalid PhoneNumber");
 				break;
+			case 3:
+				out.println("Passwords do not match");
+				break;
 			}
 			String id = request.getParameter("id");
 			out.println("<form class='userFrom' action='editprofileprocess.jsp?id=" + id + "' method='post'>");

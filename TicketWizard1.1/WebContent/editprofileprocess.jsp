@@ -16,13 +16,18 @@
 	String pw = "21218169";
 
 	int err = 0;
-	if (!email.contains("@")) {
+	if (!email.contains("@") &&  (email != "")) {
 		err = 1;
+	}
+	
+	if(password != cpassword){
+		err = 3;
 	}
 
 	try {
 		Integer.parseInt(phonenum);
 	} catch (NumberFormatException e) {
+		if(phonenum != "")
 		err = 2;
 	}
 
@@ -36,8 +41,8 @@
 			while (rst.next()) {
 				if (username == "")
 					username = rst.getString("username");
-				if (password == "")
-					password = rst.getString("password");
+				if (password == "" || password == null)
+					password = rst.getString("upw");
 				if (firstname == "")
 					firstname = rst.getString("firstname");
 				if (lastname == "")
@@ -47,11 +52,11 @@
 				if (address == "")
 					address = rst.getString("address");
 				if (phonenum == "")
-					phonenum = rst.getString("phonenum");
+					phonenum = rst.getString("phone");
 			}
 
 			PreparedStatement pstmt = con.prepareStatement(
-					"UPDATE TUser SET username = ?, password = ?, firstname = ?, lastname = ?, email = ?, address = ?, phonenum = ? WHERE uid = ?");
+					"UPDATE TUser SET username = ?, upw = ?, firstname = ?, lastname = ?, email = ?, address = ?, phone = ? WHERE uid = ?");
 			
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
@@ -63,6 +68,8 @@
 			pstmt.setString(8, id);
 			
 			pstmt.executeUpdate();
+			
+			response.sendRedirect("homepage.jsp");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -23,12 +23,12 @@
 	} else if (!password.equals(cpassword)) {
 		err = 2; //Pass != Confirm pass
 		response.sendRedirect("signup.jsp?err=" + err);
-	}else if(!email.contains("@") || !email.contains(".")){
-		
+	} else if (!email.contains("@") || !email.contains(".")) {
+
 	} else {
-		
+
 		//If the values are valid, insert into TUser the new user
-		
+
 		try { // Load driver class
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		} catch (java.lang.ClassNotFoundException e) {
@@ -47,20 +47,22 @@
 			pStmt.setString(5, address);
 			pStmt.setString(6, email);
 			pStmt.setString(7, phonenum);
-			
+
 			pStmt.executeUpdate();
-			
+
 			Statement stmt = con.createStatement();
-			ResultSet rst = stmt.executeQuery("SELECT DISTINCT uid FROM TUser WHERE username = '" + username +"'");
-			if(rst.next())
+			ResultSet rst = stmt
+					.executeQuery("SELECT DISTINCT uid FROM TUser WHERE username = '" + username + "'");
+			if (rst.next())
 				request.getSession().setAttribute("userid", rst.getInt("uid"));
-			
+
+
 			int cd = 0;
 			if (request.getParameter("code") != null)
 				cd = Integer.parseInt(request.getParameter("code"));
-			
+
 			//Where to redirect
-			if(cd==1)
+			if (cd == 1)
 				response.sendRedirect("order.jsp");
 			else
 				response.sendRedirect("homepage.jsp");

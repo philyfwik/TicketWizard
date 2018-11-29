@@ -54,6 +54,9 @@ if(id == null){
 			username = rst.getString("username");
 			firstname = rst.getString("firstname");
 			email = rst.getString("email");
+			
+			session.setAttribute("seshusername", username);
+			session.setAttribute("seshfirstname", firstname);
 		}
 	}catch(SQLException e){
 		out.print(e);
@@ -73,7 +76,7 @@ if(id == null){
 //If user is logged in, then have the option of viewing user tickets
 if(id != null){
 	out.println("<h2 align='center'><a class='button' href='listusertickets.jsp'>View Your tickets</a></h2>");
-	out.println("<h2 align='center'><a class='button' href='showcart.jsp'>Your Cart</a></h2>");
+	out.println("<h2 align='center'><a class='button' href='viewcartfromdb.jsp'>Your Cart</a></h2>");
 }
 
 Object isadmin = session.getAttribute("isadmin");

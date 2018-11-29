@@ -14,6 +14,13 @@
 <body>
 
 	<%
+		Object userid = session.getAttribute("userid");
+		Object seshname = session.getAttribute("seshusername");
+		Object seshfirst = session.getAttribute("seshfirstname");
+		if (userid != null)
+			out.print("<h3 align='left'>Logged in as <a href='showprofile.jsp?id=" + userid + "'>" + seshname
+					+ "</a><br>Welcome " + seshfirst + "<br><a href='logout.jsp'>logout</a></h3>");
+
 		String url = "jdbc:sqlserver://sql04.ok.ubc.ca:1433;DatabaseName=db_msheroub;";
 		String uid = "msheroub";
 		String pw = "21218169";
@@ -26,7 +33,9 @@
 		@SuppressWarnings({ "unchecked" })
 		HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Object>>) session
 				.getAttribute("productList");
+
 		Iterator<Map.Entry<String, ArrayList<Object>>> iterator = productList.entrySet().iterator();
+
 		out.print("<table><tr><th>Event ID</th><th>Event Name</th><th>Quantity</th><th></th>");
 		out.println("<th>Price</th><th>Subtotal</th><th></th></tr>");
 		NumberFormat currFormat = NumberFormat.getCurrencyInstance();
@@ -63,19 +72,19 @@
 		} else if (err == 4) {
 			out.println("<h3 align='center'>Invalid Exp. Date</h3>");
 		}
-		
+
 		String cardnum = "";
 		String expdate = "";
 		String ccv = "";
 		String fullname = "";
-		
+
 		try (Connection con = DriverManager.getConnection(url, uid, pw)) {
-			String sql = "SELECT DISTINCT cardnum, expirydate, ccv, fullname FROM CreditCard WHERE uid = "
+			String sql = "SELECT cardnum, expirydate, ccv, fullname FROM CreditCard WHERE uid = "
 					+ session.getAttribute("userid");
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet rst = pstmt.executeQuery();
-			
-			if(rst.next()){
+
+			while(rst.next()) {
 				cardnum = rst.getString("cardnum");
 				expdate = rst.getString("expirydate");
 				ccv = rst.getString("ccv");
@@ -84,20 +93,17 @@
 		} catch (SQLException e) {
 			out.print(e);
 		}
-		
+
 		out.println("<h2>Enter payment info</h2>"
-				+"<form class='userForm' action='orderprocess.jsp' method='post'>"
-				+"<div id='fields'>"
-				+	"<label>Card number:</label><input type='text' value='"+cardnum+"' name='cardnum' /><br />"
-				+	"<br /> <label>Expiry date (YYYY-MM-DD):</label><input type='text'"
-				+		" value='"+expdate+"' name='expdate' /><br /> <br /> <label>CCV:</label><input"
-				+		" type='password' name='ccv' /><br /> <br /> <label>Full"
-				+		" name on card:</label><input type='text' value='"+fullname+"' name='fullname' /><br /> <br /> <label>Save"
-				+		" payment info?</label><input type='checkbox' name='chkBox'> <br />"
-				+"</div>"
-				+"<br> <br> <br> <input class='button' type='submit'"
-				+	"value='Place Order' />"
-				+ "</form>'");
+				+ "<form class='userForm' action='orderprocess.jsp' method='post'>" + "<div id='fields'>"
+				+ "<label>Card number:</label><input type='text' value='" + cardnum + "' name='cardnum' /><br />"
+				+ "<br /> <label>Expiry date (YYYY-MM-DD):</label><input type='text'" + " value='" + expdate
+				+ "' name='expdate' /><br /> <br /> <label>CCV:</label><input"
+				+ " type='password' name='ccv' /><br /> <br /> <label>Full"
+				+ " name on card:</label><input type='text' value='" + fullname
+				+ "' name='fullname' /><br /> <br /> <label>Save"
+				+ " payment info?</label><input type='checkbox' name='chkBox'> <br />" + "</div>"
+				+ "<br> <br> <br> <input class='button' type='submit'" + "value='Place Order' />" + "</form>'");
 	%>
 
 

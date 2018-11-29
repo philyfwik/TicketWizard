@@ -81,11 +81,12 @@ out.print("<h3>City: "+city+"</h3>");
 out.print("<h3>Description: "+description+"</h3>");
 out.print("<h3>Location: "+location+"</h3>");
 out.print("<h3 id='price'>Ticket Price: " + currFormat.format(ticketprice) + "</h3>");
-out.print("<div align='left'><a class='button' href='db_addtocart.jsp?id=" + eventNum + "&name="+ URLEncoder.encode(eventName, "Windows-1252")+"&price="+ticketprice+"'>Add to Cart</a>");
+out.print("<div align='left'><a class='button' href='addtocart.jsp?id=" + eventNum + "&name="+ URLEncoder.encode(eventName, "Windows-1252")+"&price="+ticketprice+"'>Add to Cart</a>");
 
 //if the host of the event is the user thats currently logged in
 if(hostid == userid || session.getAttribute("isadmin") != null){
 	out.println("<a id='edit' class='button' href='editevent.jsp'>Edit Event<a>");
+	out.println("<a id='edit' class='button' href='viewattendees.jsp?id="+eventNum+"'>View Attendees<a>");
 }
 
 out.println("</div></div>");

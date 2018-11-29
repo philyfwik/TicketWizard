@@ -44,7 +44,6 @@
 					<option value="Charity">Charity</option>
 					<option value="Education">Education</option>
 					<option value="Music">Music</option>
-					<option value="Theatre">Theatre</option>
 					<option value="Games">Games</option>
 					<option value="Other">Other</option>
 				</select><br />

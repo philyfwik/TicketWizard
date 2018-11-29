@@ -36,7 +36,6 @@ case 3:
 		<label>Username:</label><input type="text" name="username" size='20'/><br/><br/>
 		<label>Password:</label><input type="password" name="password" size='20'/><br/><br/><br/>
 		<div class='wrapper'>
-			<a id='signup' class='button medButton' href='signup.jsp'>Sign Up</a>
 			<input id='login' class='button medButton' type="submit" value="Login"/>
 		</div>
 	</div>

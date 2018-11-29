@@ -12,12 +12,15 @@
 .content h3 {
 	text-align: left;
 }
+
 .content {
 	padding-bottom: 64px;
 }
+
 #price {
 	padding-bottom: 48px;
 }
+
 #edit {
 	float: right;
 }
@@ -28,6 +31,13 @@
 <body>
 
 	<%
+	Object userid = session.getAttribute("userid");
+	Object seshname = session.getAttribute("seshusername");
+	Object seshfirst = session.getAttribute("seshfirstname");
+	if (userid != null)
+		out.print("<h3 align='left'>Logged in as <a href='showprofile.jsp?id=" + userid + "'>" + seshname
+				+ "</a><br>Welcome " + seshfirst + "<br><a href='logout.jsp'>logout</a></h3>");
+		
 		// Get the current list of products
 		@SuppressWarnings({ "unchecked" })
 		HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Object>>) session
@@ -56,8 +66,8 @@
 				out.print("<tr><td>" + product.get(0) + "</td>");
 				out.print("<td>" + product.get(1) + "</td>");
 
-				out.print("<td align=\"center\"><a href='db_addtocart.jsp?id=" + product.get(0) + "&ar=-1'>--</a>"
-						+ product.get(3) + "<a href='db_addtocart.jsp?id=" + product.get(0) + "&name="
+				out.print("<td align=\"center\"><a href='removefromcart.jsp?id=" + product.get(0) + "&ar=-1'>--</a>"
+						+ product.get(3) + "<a href='addtocart.jsp?id=" + product.get(0) + "&name="
 						+ URLEncoder.encode(product.get(1).toString(), "Windows-1252") + "&price=" + product.get(2)
 						+ "&ar=1'>++</a></td>");
 				Object price = product.get(2);

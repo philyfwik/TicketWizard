@@ -16,6 +16,7 @@ public class LoadData
 	
 	public static void loadData() throws Exception
 	{		
+		
 		// TODO: Fill-in
 		String url = "jdbc:sqlserver://sql04.ok.ubc.ca:1433;DatabaseName=db_msheroub;";
 		String uid = "msheroub";

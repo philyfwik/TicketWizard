@@ -62,8 +62,7 @@
 
 			pStmt.executeUpdate();
 
-			out.println("<h1 align='center'>Event Successfully created</h1>");
-			out.println("<h3 align='center'><a href='browse.jsp'>Browse</a></h3>");
+			response.sendRedirect("browse.jsp");
 		} catch (SQLException e) {
 			out.println(e);
 		}

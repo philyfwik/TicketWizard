@@ -26,16 +26,17 @@
 		while (rst.next()) {
 			String userID = rst.getString("uid");
 			String eventnum = rst.getString("enum");
+			String ename = rst.getString("ename");
 			String price = rst.getString("price");
 			Integer qty = rst.getInt("quantity");
 
 			ArrayList<Object> product = new ArrayList<Object>();
-			product.add(userID);
 			product.add(eventnum);
+			product.add(ename);
 			product.add(price);
 			product.add(qty);
 
-			productList.put(userID, product);
+			productList.put(eventnum, product);
 
 		}
 		
